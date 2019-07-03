@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: S3 Anti Virus
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  ScanFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: scan/
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Events:
+        S3Trigger:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: ScanBucket
+            Events: s3.ObjectCreated:*
+  ScanBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: local-anti-virus

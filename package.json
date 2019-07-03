@@ -1,0 +1,19 @@
+{
+  "name": "udm_anti_virus",
+  "version": "0.0.0",
+  "description": "Scan incoming files for malware before uploading to s3",
+  "main": "index.js",
+  "scripts": {
+    "sam": "./bin/brew-setup.sh",
+    "setup": "./bin/run-local-setup.sh",
+    "deploy": "./bin/run-local-deploy.sh",
+    "test": "./bin/run-local-test.sh",
+    "log": "docker logs `docker ps -a | sed -n 2p | grep -oE '[^ ]+$'`",
+    "local": "sam local invoke ScanFunction --event event.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.486.0"
+  }
+}
