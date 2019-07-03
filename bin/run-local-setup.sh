@@ -10,7 +10,7 @@ aws --endpoint-url=http://localhost:4572 s3api put-bucket-acl --bucket local-ant
 
 # Adds a policy to our localstack test bucket so we can trigger events when an object is uploaded
 echo 'Creating bucket policy'
-aws --endpoint-url=http://localhost:4572 s3api put-bucket-policy --bucket local-anti-virus --policy file://policy.json
+aws --endpoint-url=http://localhost:4572 s3api put-bucket-policy --bucket local-anti-virus --policy file://json/policy.json
 
 # Prints our policy to console for debugging
 echo '--- bucket policy ---'
@@ -18,7 +18,7 @@ aws --endpoint-url=http://localhost:4572 s3api get-bucket-policy --bucket local-
 
 # Adds the create object notification
 echo 'Setting notification config...'
-aws --endpoint-url=http://localhost:4572 s3api put-bucket-notification-configuration --bucket local-anti-virus --notification-configuration file://notification.json
+aws --endpoint-url=http://localhost:4572 s3api put-bucket-notification-configuration --bucket local-anti-virus --notification-configuration file://json/notification.json
 
 # Prints notification config to console for debugging
 echo '-- notification config --'

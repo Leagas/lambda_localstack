@@ -2,9 +2,13 @@
 echo 'Building sam for local invoke...'
 sam build
 
+# Transpile with tsc
+echo 'Transpiling typescript files...'
+tsc ./scan/index.ts --outdir dist
+
 # Create zip for lambda creation
 echo 'Zipping lambda...'
-zip -r -D -j function.zip ./scan/index.js template.yaml
+zip -r -D -j function.zip ./dist/index.js template.yaml
 
 # First delete the function so we can redeploy
 echo 'Deleting existing lambda...'

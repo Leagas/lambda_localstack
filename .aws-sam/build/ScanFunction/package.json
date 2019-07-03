@@ -1,11 +1,37 @@
 {
-  "name": "scanfunction",
-  "version": "1.0.0",
-  "description": "",
+  "name": "udm_anti_virus",
+  "version": "0.0.0",
+  "description": "Scan incoming files for malware before uploading to s3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"init": "npm run sam && npm run setup && npm run deploy",
+    "sam": "./bin/brew-setup.sh",
+    "setup": "./bin/run-local-setup.sh",
+    "deploy": "./bin/run-local-deploy.sh",
+    "test": "./bin/run-local-test.sh",
+    "log": "docker logs `docker ps -a | sed -n 2p | grep -oE '[^ ]+$'`",
+    "local": "sam local invoke ScanFunction --event event.json"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.0.10",
+    "aws-sdk": "^2.486.0",
+    "typescript": "^3.5.2"
+  },
+  "bin": {
+    "udm_anti_virus": "setup.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leagas/Lambda-Localstack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Leagas/Lambda-Localstack/issues"
+  },
+  "homepage": "https://github.com/Leagas/Lambda-Localstack#readme"
 }
