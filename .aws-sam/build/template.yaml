@@ -11,6 +11,9 @@ Resources:
   ScanFunction:
     Properties:
       CodeUri: ScanFunction
+      Environment:
+        Variables:
+          LOCALSTACK_HOSTNAME: 192.168.65.2
       Events:
         S3Trigger:
           Properties:

@@ -1,7 +1,8 @@
-const AWS = require('aws-sdk');
+import * as AWS from 'aws-sdk'
 
 const { LOCALSTACK_HOSTNAME } = process.env
-const endpoint = `http://${LOCALSTACK_HOSTNAME}:4572`
+
+const endpoint: string = `http://${LOCALSTACK_HOSTNAME}:4572`
 
 const config = {
     endpoint: endpoint,
@@ -11,11 +12,8 @@ const config = {
 const s3 = new AWS.S3(config)
 
 exports.handler = async (event, context) => {
-    const today = new Date()
 
-    console.log(JSON.stringify(event, null, 2))
-    console.log(JSON.stringify(context, null, 2))
-
+	// List all s3 buckets
     await s3.listBuckets()
     .promise()
     .then(res => {
@@ -23,8 +21,7 @@ exports.handler = async (event, context) => {
     })
     .catch(err => {
         console.log(err)
-    })
-    
+	})
 
-    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	return "OK"
 }

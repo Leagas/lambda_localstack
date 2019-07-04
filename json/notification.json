@@ -5,17 +5,7 @@
             "LambdaFunctionArn": "arn:aws:lambda:eu-west-1:000000000000:function:ScanFunction",
             "Events": [
                 "s3:ObjectCreated:*"
-            ],
-            "Filter": {
-                "Key": {
-                    "FilterRules": [
-                        {
-                            "Name": "prefix",
-                            "Value": "__SCANME__"
-                        }
-                    ]
-                }
-            }
+            ]
         }
     ]
 }

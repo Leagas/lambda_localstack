@@ -4,15 +4,16 @@
   "description": "Scan incoming files for malware before uploading to s3",
   "main": "index.js",
   "scripts": {
-		"init": "npm run sam && npm run setup && npm run deploy",
+		"init": "npm run sam && npm run conf && npm run setup && npm run deploy",
     "sam": "./bin/brew-setup.sh",
     "setup": "./bin/run-local-setup.sh",
     "deploy": "./bin/run-local-deploy.sh",
     "test": "./bin/run-local-test.sh",
-    "log": "docker logs `docker ps -a | sed -n 2p | grep -oE '[^ ]+$'`",
-    "local": "sam local invoke ScanFunction --event event.json"
+    "log": "docker logs `docker ps -a | sed -n 2p | grep -oE '[^ ]+$'` && npm run clean",
+		"local": "sam build && tsc ./.aws-sam/build/ScanFunction/index.ts && sam local invoke ScanFunction --event json/event.json",
+		"clean": "docker rm $(docker ps -qa --no-trunc --filter 'status=exited')"
   },
-  "author": "",
+  "author": "Lloyd",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^12.0.10",

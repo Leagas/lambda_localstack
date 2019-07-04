@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+source ./bin/_config.sh
+
 # Create sam packge for local invoke
 echo 'Building sam for local invoke...'
 sam build
@@ -12,11 +15,11 @@ zip -r -D -j function.zip ./dist/index.js template.yaml
 
 # First delete the function so we can redeploy
 echo 'Deleting existing lambda...'
-aws --endpoint-url=http://localhost:4574 lambda delete-function --function-name=ScanFunction
+aws --endpoint-url=http://$LOCALHOST:$LAMBDA_PORT lambda delete-function --function-name=ScanFunction
 
 # Create lambda function on our localstack
-echo 'Creating lambda function on localstack'
-aws --endpoint-url=http://localhost:4574 \
+echo -e '\nCreating lambda function on localstack...\n'
+aws --endpoint-url=http://$LOCALHOST:$LAMBDA_PORT \
     --region=eu-west-1 lambda create-function \
     --function-name=ScanFunction \
     --runtime=nodejs8.10 \
@@ -24,5 +27,5 @@ aws --endpoint-url=http://localhost:4574 \
     --handler=index.handler \
     --zip-file=fileb://function.zip
 
-echo '--- Lambda functions on localstack ---'
-aws --endpoint-url=http://localhost:4574 lambda list-functions
+echo -e '\n--- Lambda functions on localstack ---\n'
+aws --endpoint-url=http://$LOCALHOST:$LAMBDA_PORT lambda list-functions
