@@ -3,7 +3,8 @@ S3 Anti Virus Scanner
 
 This lambda scans incoming files on s3 using AV scanner.
 
-Make sure:
+Make sure that...
+
 	1. typescript is installed globally
 	2. localstack is running
 	3. config file has been updated
