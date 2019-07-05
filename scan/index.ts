@@ -12,7 +12,9 @@ const config = {
 const s3 = new AWS.S3(config)
 
 exports.handler = async (event, context) => {
-
+	console.log(process.env)
+	console.log(JSON.stringify(event, null, 2))
+	console.log(JSON.stringify(context, null, 2))
 	// List all s3 buckets
     await s3.listBuckets()
     .promise()

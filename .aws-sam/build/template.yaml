@@ -22,6 +22,6 @@ Resources:
             Events: s3.ObjectCreated:*
           Type: S3
       Handler: index.handler
-      Runtime: nodejs8.10
+      Runtime: python2.7
     Type: AWS::Serverless::Function
 Transform: AWS::Serverless-2016-10-31
