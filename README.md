@@ -1,7 +1,7 @@
-S3 Anti Virus Scanner
+Lambda-Localstack
 ============================
 
-This lambda scans incoming files on s3 using AV scanner.
+Setup/Template for testing Lambdas on the localstack
 
 Make sure that...
 
