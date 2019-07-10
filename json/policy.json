@@ -2,14 +2,17 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "AllowPublic",
+            "Sid": "",
             "Effect": "Allow",
             "Principal": "*",
             "Action": [
-                "s3:GetObject",
-                "s3:GetObjectTagging"
+				"s3:*",
+				"lambda:*"
             ],
-            "Resource": "arn:aws:s3:::local-anti-virus/*"
+            "Resource": [
+				"arn:aws:s3:::k-fundpress-scratch",
+				"arn:aws:s3:::k-fundpress-scratch/*"
+			]
         }
     ]
 }

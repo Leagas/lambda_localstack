@@ -3,7 +3,7 @@ import * as AWS from 'aws-sdk'
 const { LOCALSTACK_HOSTNAME } = process.env
 
 const endpoint: string = `http://${LOCALSTACK_HOSTNAME}:4572`
-
+console.log(LOCALSTACK_HOSTNAME)
 const config = {
     endpoint: endpoint,
     s3ForcePathStyle: true
