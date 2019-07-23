@@ -40,3 +40,12 @@ aws --endpoint-url=http://$LOCALHOST:$LAMBDA_PORT \
 
 echo -e '\n--- Lambda functions on localstack ---\n'
 aws --endpoint-url=http://$LOCALHOST:$LAMBDA_PORT lambda list-functions
+
+
+# aws --endpoint-url=http://localhost:4574 \
+#     --region=eu-west-1 lambda create-function \
+#     --function-name=ScanFunction \
+#     --runtime=python2.7 \
+#     --role=arn:aws:lambda:eu-west-1:000000000000:function:ScanFunction \
+#     --handler=scan.lambda_handler\
+#     --zip-file=fileb://UDM_AV-package.zip

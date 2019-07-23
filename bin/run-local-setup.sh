@@ -9,9 +9,6 @@ aws --endpoint-url=http://$LOCALHOST:$S3_PORT s3 mb s3://$S3_BUCKET
 echo 'Setting bucket access control...'
 aws --endpoint-url=http://$LOCALHOST:$S3_PORT s3api put-bucket-acl --bucket $S3_BUCKET --acl public-read
 
-echo -e '\nCreating role policy...\n'
-aws --endpoint-url=http://$LOCALHOST:$IAM_PORT iam create-role --role-name Scan --assume-role-policy-document file://$IAM_ROLE
-
 # Adds a policy to our localstack test bucket so we can trigger events when an object is uploaded
 echo -e '\nCreating bucket policy...'
 aws --endpoint-url=http://$LOCALHOST:$S3_PORT s3api put-bucket-policy --bucket $S3_BUCKET --policy file://$S3_POLICY
