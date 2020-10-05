@@ -1,7 +1,7 @@
 Lambda-Localstack
 ============================
 
-Setup/Template for testing Lambdas on the localstack
+Setup/Template for testing event based lambda triggers on the localstack
 
 Make sure that...
 
